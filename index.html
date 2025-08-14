@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banco de Talentos</title>
+<style>
+    :root {
+           --azul: rgb(0, 43, 90);
+        --cinza-claro: #f1f3f4;
+        --cinza-texto: #5f6368;
+        --borda: #dadce0;
+    }
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: var(--cinza-claro);
+        margin: 0;
+        padding: 0;
+        color: #202124;
+    }
+    #talentos-header {
+    border-top: 10px solid var(--azul);
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#talentos-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+#talentos-header p {
+    margin: 0.4rem 0 0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+    form {
+    	border-top: 10px solid var(--azul);
+        max-width: 800px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .secao {
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 3px solid var(--azul);
+    }
+    h2border {
+        color: var(--azul);
+    	margin-top: 2rem;
+    	font-size: 1.3rem;
+    	border-left: 5px solid var(--azul);
+    	padding-left: 10px;
+    }
+    p.descricao {
+        font-size: 0.92rem;
+        color: var(--cinza-texto);
+        margin: -5px 0 15px;
+    }
+    label {
+        display: block;
+        margin-bottom: 0.50rem;
+        font-weight: bold; /* Negrito */
+    }
+    b {
+        font-weight: bold; /* Negrito */
+    }
+    /* Asterisco vermelho nos campos obrigatórios */
+    label::after {
+        content: " *";
+        color: red;
+    }
+    /* Evita duplicar asterisco em opções de checkbox/radio */
+    .opcoes label::after {
+        content: none;
+    }
+    input[type=text],
+    input[type=email],
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--borda);
+        border-radius: 6px;
+        font-size: 0.5rem;
+        margin-bottom: 1.5rem;
+        box-sizing: border-box;
+        background-color: white;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input[type=text]:focus,
+    input[type=email]:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: var(--azul);
+        box-shadow: 0 0 0 3px rgba(0, 43, 90, 0.15);
+    }
+    input[type=radio],
+    input[type=checkbox] {
+        margin-right: 0.4rem;
+        transform: scale(1.1);
+    }
+    .opcoes label {
+        font-weight: normal;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.25rem;
+        cursor: pointer;
+        padding: 6px;
+        border-radius: 4px;
+        transition: background-color 0.15s;
+    }
+    .opcoes label:hover {
+        background-color: rgba(0, 43, 90, 0.05);
+    }
+    .opcoes + label,
+	.secao > label:first-of-type {
+    margin-top: 1.5rem; /* Ajuste o valor conforme quiser */
+	}
+    
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+    button {
+        background-color: var(--azul);
+        color: white;
+        border: none;
+        padding: 14px 26px;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    button:hover {
+        background-color: rgb(0, 30, 60);
+    }
+    .hidden {
+        display: none;
+    }
+    
+    .custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+    background-color: var(--azul);
+    color: white;
+    padding: 12px 22px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    text-align: center;
+    transition: background-color 0.2s;
+    margin-top: 5px;
+}
+
+.custom-file-upload:hover {
+    background-color: rgb(0, 30, 60);
+}
+
+.custom-file-upload input {
+    display: none; /* esconde o input padrão */
+}
+
+.custom-file-upload svg {
+    vertical-align: middle;
+    margin-right: 6px;
+    fill: white; /* garante que a seta fique branca */
+}
+
+.upload-container {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* espaço entre o botão e o texto */
+}
+
+.upload-info {
+    font-size: 0.8rem;
+    color: var(--cinza-texto);
+}
+    
+/* Select estilizado com seta customizada */
+select {
+    color: #999; /* placeholder cinza */
+    width: 50%;
+    padding: 12px;
+    padding-right: 2.5rem;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    box-sizing: border-box;
+    background-color: white;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'12'%20height%3D'7'%20viewBox%3D'0%200%2012%207'%20fill%3D'none'%20xmlns%3D'http://www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M1%201L6%206L11%201'%20stroke%3D'%23002b5a'%20stroke-width%3D'2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px 7px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Placeholder cinza, opções reais sempre pretas */
+select:invalid {
+    color: #999; /* placeholder cinza */
+}
+/* Placeholder cinza, opções reais sempre pretas */
+select:valid {
+    color: #000; /* placeholder preto */
+}
+select option {
+    color: #000; /* opções reais em preto */
+}
+
+
+/* Input estilizado com apenas uma linha */
+input[type=text],
+input[type=email],
+textarea {
+    border: none; /* remove todas as bordas */
+    border-bottom: 2px solid var(--borda); /* apenas borda inferior */
+    border-radius: 0; /* remove arredondamento */
+    padding: 0; /* só um padding vertical */
+    font-size: 1rem;
+    width: 50%;
+    background-color: transparent;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: none; /* remove sombra ao focar */
+    border-bottom: 2px solid var(--azul); /* muda a cor da linha ao focar */
+}
+
+.input-outro-wrapper {
+    flex: 1;
+    position: relative;
+}
+
+.input-outro-wrapper input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid var(--borda);
+    padding: 0;
+    background: transparent;
+}
+
+.input-outro-wrapper input:focus {
+    outline: none;
+    border-bottom-color: var(--azul);
+}
+
+.linha-animada {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--azul);
+    transition: 0.3s;
+}
+
+.input-outro-wrapper input:focus + .linha-animada {
+    width: 100%;
+}
+
+.flex-com-outro {
+    display: flex;
+    width: 49%;
+    align-items: center; /* alinha verticalmente radio + label + input */
+    gap: 2px; /* espaço entre o radio e o texto "Outro" e o input */
+}
+
+.flex-com-outro input[type="radio"] {
+    margin: 5px; /* remove espaçamento padrão do navegador */
+}
+
+.flex-com-outro input[type="text"] {
+    flex: 1; /* ocupa o espaço restante */
+    margin: 0; /* remove margin padrão */
+    padding: 0; /* padding vertical pequeno */
+    border: none;
+    border-bottom: 2px solid var(--borda);
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.flex-com-outro input[type="text"]:focus {
+    outline: none;
+    box-shadow: none;
+    border-bottom: 2px solid var(--azul);
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-between; /* um botão de cada lado */
+    margin-top: 10px;
+}
+
+.botoes-pagina2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.botoes-pagina2 .esquerda button {
+    margin-right: 10px;
+}
+
+/*Modal*/
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 450px;
+    text-align: center; /* centraliza o texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centraliza horizontalmente os filhos */
+}
+
+.modal-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    align-items: center; /* reforça centralização */
+}
+
+.modal-content p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.modal-botoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.modal-botoes button {
+    flex: 1;    
+	width:100px;
+    padding: 10px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.modal-botoes #cancelarLimpar { background: #ccc; color: #333; }
+.modal-botoes #cancelarLimpar:hover { background: #999; }
+.modal-botoes #confirmarLimpar { background: rgb(0,43,90); color: white; }
+.modal-botoes #confirmarLimpar:hover { background: rgb(0,30,60); }
+.hidden { display: none; }
+
+</style>
+</head>
+<body>
+
+<header id="talentos-header">
+    <h1>Formulário de Banco de Talentos</h1>
+    <br>
+    <p>Este formulário tem como objetivo <b>reunir informações de profissionais interessados em oportunidades conosco</b>, tanto para <b>futuras vagas</b> quanto para <b>candidaturas imediatas</b>, dependendo das oportunidades disponíveis no momento. Ao se cadastrar, seu perfil será<br>incluído em nosso <b>banco de talentos</b> e poderá ser considerado em <b>processos seletivos<br>atuais ou futuros</b>, conforme seu perfil e a demanda do mercado.
+    <br><br>
+    <b>IMPORTANTE:</b> Este formulário não garante participação em um processo seletivo ativo<br>para todas as vagas, mas nos ajuda a nos conectar com você e <b>nos antecipar a novas<br>oportunidades</b>.</p><br>
+    <p><span style="color:red"><b>*</b></span> <span style="color:#5f6368">Indica uma pergunta obrigatória</span></p>
+</header>
+
+<form action="https://script.google.com/macros/s/AKfycbzlpM_pG6W0L_8A1D0OO2ABJwigIkBP8OOe3TZzc9t8s4bOH3_v8wvt5WZ2g8h2re0cWg/exec" method="POST" enctype="multipart/form-data">
+    <!-- Página 1 - Informações Pessoais -->
+    <div id="pagina1">
+        <div class="secao">
+            <h2border>1. INFORMAÇÕES PESSOAIS</h2border>
+
+            <label>Nome Completo</label>
+            <input type="text" name="nome" required>
+
+            <label>E-mail</label>
+            <input type="email" name="email" 
+       required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$">
+
+            <label>Data de Nascimento</label>
+            <input type="text" name="nascimento" required>
+
+            <label>Gênero</label>
+        <div class="opcoes">
+            <label><input type="radio" name="genero" value="Feminino" required> Feminino</label>
+            <label><input type="radio" name="genero" value="Masculino"> Masculino</label>
+                <label class="flex-com-outro">
+                    <input type="radio" name="genero" value="Outro"> Outro:
+                    <div class="input-outro-wrapper">
+                        <input type="text" name="genero_outro" placeholder="" class="hidden">
+                        <span class="linha-animada"></span>
+                    </div>
+                </label>
+            </div>
+
+            <label>Estado Civil</label>
+            <div class="opcoes">
+                <label><input type="radio" name="estado_civil" value="Solteiro" required> Solteiro</label>
+                <label><input type="radio" name="estado_civil" value="Casado"> Casado</label>
+                <label><input type="radio" name="estado_civil" value="União Estável"> União Estável</label>
+                <label><input type="radio" name="estado_civil" value="Separado"> Separado</label>
+                <label><input type="radio" name="estado_civil" value="Divorciado"> Divorciado</label>
+                <label><input type="radio" name="estado_civil" value="Viúvo"> Viúvo</label>
+            </div>
+
+            <label>Filhos</label>
+            <div class="opcoes">
+                <label><input type="radio" name="filhos" value="Tenho um" required> Tenho um</label>
+                <label><input type="radio" name="filhos" value="Tenho dois"> Tenho dois</label>
+                <label><input type="radio" name="filhos" value="Tenho mais de dois"> Tenho mais de dois</label>
+                <label><input type="radio" name="filhos" value="Não tenho filhos"> Não tenho filhos</label>
+            </div>
+
+            <label>Cidade em que reside</label>
+            <select name="cidade" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option>Águas Belas</option>
+                <option>Bom Conselho</option>
+                <option>Brejão</option>
+                <option>Caetés</option>
+                <option>Capoeiras</option>
+                <option>Canhotinho</option>
+                <option>Correntes</option>
+                <option>Garanhuns</option>
+                <option>Iatí</option>
+                <option>Jupi</option>
+                <option>Lajedo</option>
+                <option>Paranatama</option>
+                <option>Saloá</option>
+                <option>São Bento do Una</option>
+                <option>São João</option>
+                <option>Venturosa</option>
+            </select>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="button" onclick="proximaPagina()">Avançar</button>
+        <button type="button" id="limpar-formulario1">Limpar Formulário</button>
+    </div>
+</div>
+
+    <!-- Página 2 - Informações Profissionais -->
+    <div id="pagina2" class="hidden">
+        <div class="secao">
+            <h2border>2. INFORMAÇÕES PROFISSIONAIS</h2border>
+
+            <label>Nível de escolaridade</label>
+            <select name="escolaridade" required>
+                <option value="">Selecione...</option>
+                <option>Não alfabetizado</option>
+                <option>Ensino Fundamental incompleto</option>
+                <option>Ensino Fundamental completo</option>
+                <option>Ensino Médio incompleto</option>
+                <option>Ensino Médio completo</option>
+                <option>Ensino Técnico</option>
+                <option>Ensino Superior incompleto</option>
+                <option>Ensino Superior completo</option>
+                <option>Pós-Graduação incompleta</option>
+                <option>Pós-Graduação completa</option>
+                <option>Mestrado</option>
+                <option>Doutorado</option>
+                <option>Pós-doutorado</option>
+            </select>
+
+            <label>Área profissional desejada</label>
+            <p class="descricao">Pode selecionar mais de um.</p>
+            <div class="opcoes">
+                <label><input type="checkbox" name="area[]" value="Administrador"> Administrador</label>
+                <label><input type="checkbox" name="area[]" value="Analista de RH"> Analista de RH</label>
+                <label><input type="checkbox" name="area[]" value="Assistente Administrativo"> Assistente Administrativo</label>
+                <label><input type="checkbox" name="area[]" value="Assistente de RH"> Assistente de RH</label>
+                <label><input type="checkbox" name="area[]" value="Auxiliar Administrativo"> Auxiliar Administrativo</label>
+                <label><input type="checkbox" name="area[]" value="Auxiliar de Carga e Descarga"> Auxiliar de Carga e Descarga</label>
+                <label><input type="checkbox" name="area[]" value="Auxiliar de RH"> Auxiliar de RH</label>
+                <label><input type="checkbox" name="area[]" value="Carpinteiro"> Carpinteiro</label>
+                <label><input type="checkbox" name="area[]" value="Estoquista"> Estoquista</label>
+                <label><input type="checkbox" name="area[]" value="Gerente de RH Generalista"> Gerente de RH Generalista</label>
+                <label><input type="checkbox" name="area[]" value="Operador de Caixa"> Operador de Caixa</label>
+                <label><input type="checkbox" name="area[]" value="Pedreiro"> Pedreiro</label>
+                <label><input type="checkbox" name="area[]" value="Recepcionista"> Recepcionista</label>
+                <label><input type="checkbox" name="area[]" value="Servente"> Servente</label>
+                <label><input type="checkbox" name="area[]" value="Serviços Gerais"> Serviços Gerais</label>
+                <label><input type="checkbox" name="area[]" value="Telemarketing"> Telemarketing</label>
+                <label><input type="checkbox" name="area[]" value="Vendedor Externo"> Vendedor Externo</label>
+                <label><input type="checkbox" name="area[]" value="Vendedor Interno"> Vendedor Interno</label>
+                <label class="flex-com-outro">
+                    <input type="checkbox" name="area[]" value="Outro"> Outro:
+                    <div class="input-outro-wrapper">
+                        <input type="text" name="area_outro" placeholder="" class="hidden">
+                        <span class="linha-animada"></span>
+                    </div>
+                </label>
+            </div>
+
+            <label>WhatsApp</label><p class="descricao">Adicione o DDD.</p>
+            <input type="text" name="whatsapp" placeholder="" required>
+
+            <label>Envie seu Currículo</label>
+            <div class="upload-container">
+                <label class="custom-file-upload">
+                    <input type="file" name="curriculo" accept=".pdf,.doc,.docx" required>
+                    <span>
+                        Enviar
+                    </span>
+                </label>
+                <small class="upload-info">Faça upload de 1 arquivo aceito: DOCX e PDF.<br>
+                O tamanho máximo é de 100 MB.</small>
+            </div>
+
+        </div>
+
+        <div class="secao">
+            <h2border>TERMO DE CONSENTIMENTO E PROTEÇÃO DE DADOS <span style="color:#5f6368"></span>*</h2border>
+            <p class="descricao">
+                Ao preencher e enviar este formulário, você concorda expressamente com a coleta,
+                armazenamento e tratamento dos seus dados pessoais nos termos da Lei Geral de
+                Proteção de Dados (LGPD - Lei nº 13.709/2018).
+            </p>
+            <label class="opcoes"><input type="checkbox" name="termo" required> Li e concordo</label>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <button type="button" onclick="voltarPagina()">Voltar</button>
+            <button type="submit">Enviar</button>
+        </div>
+        <button type="button" id="limpar-formulario2">Limpar Formulário</button>
+    </div>
+</div>
+</form>
+
+<!-- Modal de confirmação -->
+<div id="modalLimpar" class="modal hidden">
+  <div class="modal-content">
+    <h1>Limpar o formulário?</h1>
+    <p>Com isso, todas as respostas serão removidas.<br>Não será possível desfazer esta ação.</p>
+    <div class="modal-botoes">
+      <button id="cancelarLimpar">Cancelar</button>
+      <button id="confirmarLimpar">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de aviso -->
+<div id="modalAviso" class="modal hidden">
+  <div class="modal-content">
+    <h1>Atenção!</h1>
+    <p id="mensagemAviso"></p>
+    <div class="modal-botoes">
+      <button id="fecharAviso">Ok</button>
+    </div>
+  </div>
+</div>
+
+<script>
+    // Botão de páginas
+    function proximaPagina() {
+        document.getElementById('pagina1').classList.add('hidden');
+        document.getElementById('pagina2').classList.remove('hidden');
+    }
+    function voltarPagina() {
+        document.getElementById('pagina2').classList.add('hidden');
+        document.getElementById('pagina1').classList.remove('hidden');
+    }
+
+    // Máscaras de input
+    const nascimento = document.querySelector('input[name="nascimento"]');
+    nascimento.addEventListener("input", function() {
+        let valor = this.value.replace(/\D/g, "");
+        if (valor.length > 8) valor = valor.slice(0,8);
+        valor = valor.replace(/^(\d{2})(\d)/, "$1/$2");
+        valor = valor.replace(/^(\d{2})\/(\d{2})(\d)/, "$1/$2/$3");
+        this.value = valor;
+    });
+
+    const whatsapp = document.querySelector('input[name="whatsapp"]');
+    whatsapp.addEventListener("input", function() {
+        let valor = this.value.replace(/\D/g, "");
+        if (valor.length > 11) valor = valor.slice(0,11);
+        valor = valor.replace(/^(\d{2})(\d)/, "($1) $2");
+        valor = valor.replace(/(\d{5})(\d)/, "$1-$2");
+        this.value = valor;
+    });
+    
+    const emailInput = document.querySelector('input[name="email"]');
+
+emailInput.addEventListener('input', () => {
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailInput.value);
+    emailInput.style.borderBottomColor = emailValido ? 'green' : 'red';
+	});
+
+    // Campo “Outro” gênero
+    const generoOutroRadio = document.querySelector('input[name="genero"][value="Outro"]');
+    const generoOutroInput = document.querySelector('input[name="genero_outro"]');
+
+    generoOutroRadio.addEventListener('change', () => {
+        generoOutroInput.classList.remove('hidden');
+    });
+
+    document.querySelectorAll('input[name="genero"]').forEach(radio => {
+        if (radio.value !== 'Outro') {
+            radio.addEventListener('change', () => {
+                generoOutroInput.classList.add('hidden');
+            });
+        }
+    });
+
+    // Área profissional “Outro”
+    const areaOutroCheckbox = document.querySelector('input[name="area[]"][value="Outro"]');
+    const areaOutroInput = document.querySelector('input[name="area_outro"]');
+
+    areaOutroCheckbox.addEventListener('change', () => {
+        if(areaOutroCheckbox.checked) {
+            areaOutroInput.classList.remove('hidden');
+        } else {
+            areaOutroInput.classList.add('hidden');
+        }
+    });
+
+    // Cor do Selecione
+    document.querySelectorAll('select').forEach(sel => {
+    sel.addEventListener('change', function() {
+        if(this.value !== "") {
+            this.classList.add('valid'); // texto preto
+        } else {
+            this.classList.remove('valid'); // volta para cinza
+        }
+    });
+});
+
+    // Limpar Formulário
+
+let botaoAtual = null; // para saber se é página1 ou página2
+
+// abrir modal
+function abrirModal(botao) {
+    botaoAtual = botao;
+    document.getElementById('modalLimpar').classList.remove('hidden');
+}
+
+// fechar modal
+function fecharModal() {
+    document.getElementById('modalLimpar').classList.add('hidden');
+}
+
+// ação confirmar
+document.getElementById('confirmarLimpar').addEventListener('click', function() {
+    document.getElementById('formulario').reset();
+    fecharModal();
+    if(botaoAtual === 2) {
+        voltarPagina(); // opcional: volta para página 1 se for página 2
+    }
+});
+
+// ação cancelar
+document.getElementById('cancelarLimpar').addEventListener('click', fecharModal);
+
+// substituir os antigos confirm()
+document.getElementById('limpar-formulario1').addEventListener('click', function() {
+    abrirModal(1);
+});
+document.getElementById('limpar-formulario2').addEventListener('click', function() {
+    abrirModal(2);
+});
+
+// Validar Página
+function mostrarAviso(mensagem) {
+    document.getElementById('mensagemAviso').textContent = mensagem;
+    document.getElementById('modalAviso').classList.remove('hidden');
+}
+
+document.getElementById('fecharAviso').addEventListener('click', function() {
+    document.getElementById('modalAviso').classList.add('hidden');
+});
+
+function validarPagina(paginaId) {
+    const pagina = document.getElementById(paginaId);
+    const campos = pagina.querySelectorAll("input[required], select[required], textarea[required]");
+
+    for (let campo of campos) {
+        if (campo.type === "radio" || campo.type === "checkbox") {
+            const grupo = pagina.querySelectorAll(`[name="${campo.name}"]`);
+            if (![...grupo].some(c => c.checked)) {
+                mostrarAviso("Preencha todos os campos obrigatórios antes de continuar.");
+                campo.focus();
+                return false;
+            }
+        } else if (!campo.value.trim()) {
+            mostrarAviso("Preencha todos os campos obrigatórios antes de continuar.");
+            campo.focus();
+            return false;
+        }
+    }
+    return true;
+}
+
+function proximaPagina() {
+    if (validarPagina("pagina1")) {
+        document.getElementById('pagina1').classList.add('hidden');
+        document.getElementById('pagina2').classList.remove('hidden');
+    }
+}
+
+document.getElementById("formulario").addEventListener("submit", function(event) {
+    if (!validarPagina("pagina1") || !validarPagina("pagina2")) {
+        event.preventDefault();
+    }
+});
+    
+</script>
+</body>
+</html>
