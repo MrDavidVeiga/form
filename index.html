@@ -39,9 +39,9 @@ JotForm.paymentExtrasOnTheFly([null,null,null,null,null,null,null,null,{"descrip
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/stylebuilder/static/form-common.css?v=37a7cbe
 "/>
 <style type="text/css">@media print{*{-webkit-print-color-adjust: exact !important;color-adjust: exact !important;}.form-section{display:inline!important}.form-pagebreak{display:none!important}.form-section-closed{height:auto!important}.page-section{position:initial!important}}</style>
-<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.64743&themeRevisionID=63a2351435646363a50e3ee0"/>
-<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_styles.css?3.3.64743" />
-<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_feature.css?3.3.64743" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.64744&themeRevisionID=63a2351435646363a50e3ee0"/>
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_styles.css?3.3.64744" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_feature.css?3.3.64744" />
 <style type="text/css" id="form-designer-style">
     /* Injected CSS Code */
 
@@ -71,8 +71,8 @@ JotForm.paymentExtrasOnTheFly([null,null,null,null,null,null,null,null,{"descrip
 }
 /* 10 - LINE SPACING */
 .form-line {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 .supernova .form-all,
 .form-all {
@@ -110,30 +110,8 @@ ul.form-section {
 }
 /* Heights */
 /* 11 - LINE PADDING */
-.form-line {
-  padding: 14px 4px;
-}
 /* LABEL STYLE */
-.form-label {
-  font-weight: bold;
-}
-.form-checkbox-item label,
-.form-radio-item label {
-  font-weight: 500;
-}
-.form-dropdown:first-child {
-  border-color: #002b5a;
-}
-.form-dropdown {
-  margin: 0;
-  border-width: 1px;
-}
 /* 12 - ROUNDED INPUTS */
-.form-dropdown {
-  border-radius: 6px;
-  appearance: none;
-  margin: 0;
-}
 .form-radio-item,
 .form-checkbox-item {
   padding-bottom: 0px;
@@ -166,20 +144,44 @@ ul.form-section {
   width: 20px;
   height: 20px;
 }
+.form-checkbox-item input,
+.form-radio-item input {
+  margin-top: 2px;
+}
+.form-checkbox:checked + label:before,
+.form-checkbox:checked + span:before {
+  background-color: #2e69ff;
+  border-color: #2e69ff;
+}
+.form-radio:checked + label:before,
+.form-radio:checked + span:before {
+  border-color: #2e69ff;
+}
+.form-radio:checked + label:after,
+.form-radio:checked + span:after {
+  background-color: #2e69ff;
+}
+.form-checkbox:hover + label:before,
+.form-checkbox:hover + span:before,
+.form-radio:hover + label:before,
+.form-radio:hover + span:before {
+  border-color: rgba(46, 105, 255, 0.5);
+  box-shadow: 0 0 0 2px rgba(46, 105, 255, 0.25);
+}
+.form-checkbox:focus + label:before,
+.form-checkbox:focus + span:before,
+.form-radio:focus + label:before,
+.form-radio:focus + span:before {
+  border-color: #2e69ff;
+  box-shadow: 0 0 0 3px rgba(46, 105, 255, 0.25);
+}
 .submit-button {
   font-size: 16px;
   font-weight: normal;
   font-family: inherit;
-  width: 180px;
-  border-color: #18bd5b;
 }
 .submit-button {
   min-width: 180px;
-}
-.form-submit-button,
-.form-submit-reset,
-.form-submit-print {
-  border-radius: 6px;
 }
 .form-all .form-pagebreak-back,
 .form-all .form-pagebreak-next {
@@ -293,7 +295,7 @@ div.form-header-group.hasImage {
 }
 .form-header-group .form-header,
 .form-header-group .form-subHeader {
-  color: #2c3344;
+  color: -1;
 }
 .form-line-error {
   -webkit-transition-property: none;
@@ -311,7 +313,7 @@ div.form-header-group.hasImage {
   -ms-transition-timing-function: ease;
   -o-transition-timing-function: ease;
   transition-timing-function: ease;
-  background-color: #ffd6d6;
+  background-color: none;
 }
 .form-line-error .form-error-message {
   background-color: #f23a3c;
@@ -327,30 +329,8 @@ div.form-header-group.hasImage {
   border: 1px solid #f23a3c;
   box-shadow: 0 0 3px #f23a3c;
 }
-.form-line-error {
-  -webkit-transition-property: none;
-  -moz-transition-property: none;
-  -ms-transition-property: none;
-  -o-transition-property: none;
-  transition-property: none;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -ms-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease;
-  -moz-transition-timing-function: ease;
-  -ms-transition-timing-function: ease;
-  -o-transition-timing-function: ease;
-  transition-timing-function: ease;
-  background-color: #ffd6d6;
-}
-.form-header-group .form-header,
-.form-header-group .form-subHeader {
-  color: #2c3344;
-}
 .form-line-active {
-  background-color: #f0f4ff;
+  background-color: #f1f5ff;
 }
 /* 29 - FORM COLUMNS */
 
@@ -434,28 +414,34 @@ div.form-header-group.hasImage {
 }
 
 .form-all {
-    border-top : 20px solid #002B5A;
     border-radius : 20px;
     font-family : Montserrat;
 }
 
 html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden; /* oculta scroll interno */
-	  background-color: transparent;
-    }
+    margin : 0;
+    padding : 0;
+    width : 100%;
+    height : 100%;
+    overflow : hidden;
+    /* oculta scroll interno */
+	  background-color : transparent;
+}
 
 .error-navigation-container {
-    visibility: hidden;
+    visibility : hidden;
 }
-	
+
+.form-section.page-section {
+    border-top : 20px solid #002B5A;
+    border-radius : 20px;
+}
+
+
     /* Injected CSS Code */
 </style>
 
-<form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" action="https://submit.jotform.com/submit/252284698364672" method="post" enctype="multipart/form-data" name="form_252284698364672" id="252284698364672" accept-charset="utf-8" autocomplete="on"><input type="hidden" name="formID" value="252284698364672" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1755469103409" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="submitDate" name="submitDate" value="undefined" /><input type="hidden" id="buildDate" name="buildDate" value="1755469103409" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
+<form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" action="https://submit.jotform.com/submit/252284698364672" method="post" enctype="multipart/form-data" name="form_252284698364672" id="252284698364672" accept-charset="utf-8" autocomplete="on"><input type="hidden" name="formID" value="252284698364672" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1755472899638" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="submitDate" name="submitDate" value="undefined" /><input type="hidden" id="buildDate" name="buildDate" value="1755472899638" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
   <div role="main" class="form-all">
     <ul class="form-section page-section" role="presentation">
       <li class="form-line" data-type="control_text" id="id_44">
@@ -630,7 +616,3 @@ html, body {
     }
   </script>
 </form><script type="text/javascript">JotForm.ownerView=true;</script><script type="text/javascript">JotForm.isNewSACL=true;</script>
-
-
-
-
