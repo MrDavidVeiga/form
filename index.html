@@ -1,737 +1,325 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banco de Talentos</title>
-<style>
-    :root {
-           --azul: rgb(0, 43, 90);
-        --cinza-claro: #f1f3f4;
-        --cinza-texto: #5f6368;
-        --borda: #dadce0;
-    }
-    body {
-        font-family: Montserrat;
-        margin: 0;
-        padding: 0;
-        color: #202124;
-    }
-    #talentos-header {
-    border-top: 10px solid var(--azul);
-    max-width: 800px;
-    margin: 20px auto;
-    background: white;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+<script>window.enableEventObserver=true</script>
+<script src="https://cdn.jotfor.ms/s/static/15f0e020ab5/static/prototype.forms.js" type="text/javascript"></script>
+<script src="https://cdn.jotfor.ms/s/static/15f0e020ab5/static/jotform.forms.js" type="text/javascript"></script>
+<script src="https://cdn.jotfor.ms/s/static/15f0e020ab5/js/vendor/maskedinput_5.0.9.min.js" type="text/javascript"></script>
+<script src="https://cdn.jotfor.ms/s/static/15f0e020ab5/js/punycode-1.4.1.min.js" type="text/javascript" defer></script>
+<script src="https://cdn.jotfor.ms/s/static/15f0e020ab5/js/vendor/imageinfo.js" type="text/javascript"></script>
+<script src="https://cdn.jotfor.ms/s/static/15f0e020ab5/file-uploader/fileuploader.js" type="text/javascript"></script>
+<script src="https://cdn.jotfor.ms/s/static/15f0e020ab5/js/vendor/smoothscroll.min.js" type="text/javascript"></script>
+<script src="https://cdn.jotfor.ms/s/static/15f0e020ab5/js/errorNavigation.js" type="text/javascript"></script>
+<script type="text/javascript">	JotForm.newDefaultTheme = true;
+	JotForm.extendsNewTheme = false;
+	JotForm.singleProduct = false;
+	JotForm.newPaymentUIForNewCreatedForms = false;
+	JotForm.texts = {"confirmEmail":"E-mail does not match","pleaseWait":"Please wait...","validateEmail":"You need to validate this e-mail","confirmClearForm":"Are you sure you want to clear the form","lessThan":"Your score should be less than or equal to","incompleteFields":"There are incomplete required fields. Please complete them.","required":"This field is required.","requireOne":"At least one field required.","requireEveryRow":"Every row is required.","requireEveryCell":"Every cell is required.","email":"Enter a valid e-mail address","alphabetic":"This field can only contain letters","numeric":"This field can only contain numeric values","alphanumeric":"This field can only contain letters and numbers.","cyrillic":"This field can only contain cyrillic characters","url":"This field can only contain a valid URL","currency":"This field can only contain currency values.","fillMask":"Field value must fill mask.","uploadExtensions":"You can only upload following files:","noUploadExtensions":"File has no extension file type (e.g. .txt, .png, .jpeg)","uploadFilesize":"File size cannot be bigger than:","uploadFilesizemin":"File size cannot be smaller than:","gradingScoreError":"Score total should only be less than or equal to","inputCarretErrorA":"Input should not be less than the minimum value:","inputCarretErrorB":"Input should not be greater than the maximum value:","maxDigitsError":"The maximum digits allowed is","minCharactersError":"The number of characters should not be less than the minimum value:","maxCharactersError":"The number of characters should not be more than the maximum value:","freeEmailError":"Free email accounts are not allowed","minSelectionsError":"The minimum required number of selections is ","maxSelectionsError":"The maximum number of selections allowed is ","pastDatesDisallowed":"Date must not be in the past.","dateLimited":"This date is unavailable.","dateInvalid":"This date is not valid. The date format is {format}","dateInvalidSeparate":"This date is not valid. Enter a valid {element}.","ageVerificationError":"You must be older than {minAge} years old to submit this form.","multipleFileUploads_typeError":"{file} has invalid extension. Only {extensions} are allowed.","multipleFileUploads_sizeError":"{file} is too large, maximum file size is {sizeLimit}.","multipleFileUploads_minSizeError":"{file} is too small, minimum file size is {minSizeLimit}.","multipleFileUploads_emptyError":"{file} is empty, please select files again without it.","multipleFileUploads_uploadFailed":"File upload failed, please remove it and upload the file again.","multipleFileUploads_onLeave":"The files are being uploaded, if you leave now the upload will be cancelled.","multipleFileUploads_fileLimitError":"Only {fileLimit} file uploads allowed.","dragAndDropFilesHere_infoMessage":"Drag and drop files here","chooseAFile_infoMessage":"Choose a file","maxFileSize_infoMessage":"Max. file size","generalError":"There are errors on the form. Please fix them before continuing.","generalPageError":"There are errors on this page. Please fix them before continuing.","wordLimitError":"Too many words. The limit is","wordMinLimitError":"Too few words.  The minimum is","characterLimitError":"Too many Characters.  The limit is","characterMinLimitError":"Too few characters. The minimum is","ccInvalidNumber":"Credit Card Number is invalid.","ccInvalidCVC":"CVC number is invalid.","ccInvalidExpireDate":"Expire date is invalid.","ccInvalidExpireMonth":"Expiration month is invalid.","ccInvalidExpireYear":"Expiration year is invalid.","ccMissingDetails":"Please fill up the credit card details.","ccMissingProduct":"Please select at least one product.","ccMissingDonation":"Please enter numeric values for donation amount.","disallowDecimals":"Please enter a whole number.","restrictedDomain":"This domain is not allowed","ccDonationMinLimitError":"Minimum amount is {minAmount} {currency}","requiredLegend":"All fields marked with * are required and must be filled.","geoPermissionTitle":"Permission Denied","geoPermissionDesc":"Check your browser's privacy settings.","geoNotAvailableTitle":"Position Unavailable","geoNotAvailableDesc":"Location provider not available. Please enter the address manually.","geoTimeoutTitle":"Timeout","geoTimeoutDesc":"Please check your internet connection and try again.","selectedTime":"Selected Time","formerSelectedTime":"Former Time","cancelAppointment":"Cancel Appointment","cancelSelection":"Cancel Selection","confirmSelection":"Confirm Selection","noSlotsAvailable":"No slots available","slotUnavailable":"{time} on {date} has been selected is unavailable. Please select another slot.","multipleError":"There are {count} errors on this page. Please correct them before moving on.","oneError":"There is {count} error on this page. Please correct it before moving on.","doneMessage":"Well done! All errors are fixed.","invalidTime":"Enter a valid time","doneButton":"Done","reviewSubmitText":"Review and Submit","nextButtonText":"Next","prevButtonText":"Previous","seeErrorsButton":"See Errors","notEnoughStock":"Not enough stock for the current selection","notEnoughStock_remainedItems":"Not enough stock for the current selection ({count} items left)","soldOut":"Sold Out","justSoldOut":"Just Sold Out","selectionSoldOut":"Selection Sold Out","subProductItemsLeft":"({count} items left)","startButtonText":"START","submitButtonText":"Submit","submissionLimit":"Sorry! Only one entry is allowed. <br> Multiple submissions are disabled for this form.","reviewBackText":"Back to Form","seeAllText":"See All","progressMiddleText":"of","fieldError":"field has an error.","error":"Error"};
+	JotForm.newPaymentUI = true;
+	JotForm.originalLanguage = "en";
+	JotForm.isFormViewTrackingAllowed = true;
+	JotForm.replaceTagTest = true;
+	JotForm.activeRedirect = "thanktext";
+	JotForm.uploadServerURL = "https://upload.jotform.com/upload";
+	JotForm.submitError="jumpToFirstError";
+	JotForm.isFullSource = true;
 
-#talentos-header h1 {
-    margin: 0;
-    font-size: 1.8rem;
-}
-
-#talentos-header p {
-    margin: 0.4rem 0 0;
-    font-size: 1rem;
-    opacity: 0.9;
-}
-    form {
-    	border-top: 10px solid var(--azul);
-        max-width: 800px;
-        margin: 20px auto;
-        background: white;
-        padding: 20px 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .secao {
-        padding-bottom: 1rem;
-        margin-bottom: 1.5rem;
-        border-bottom: 3px solid var(--azul);
-    }
-    h2border {
-        color: var(--azul);
-    	margin-top: 2rem;
-    	font-size: 1.3rem;
-    	border-left: 5px solid var(--azul);
-    	padding-left: 10px;
-    }
-    p.descricao {
-        font-size: 0.92rem;
-        color: var(--cinza-texto);
-        margin: -5px 0 15px;
-    }
-    label {
-        display: block;
-        margin-bottom: 0.50rem;
-        font-weight: bold; /* Negrito */
-    }
-    b {
-        font-weight: bold; /* Negrito */
-    }
-    /* Asterisco vermelho nos campos obrigatórios */
-    label::after {
-        content: " *";
-        color: red;
-    }
-    /* Evita duplicar asterisco em opções de checkbox/radio */
-    .opcoes label::after {
-        content: none;
-    }
-    input[type=text],
-    input[type=email],
-    select,
-    textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid var(--borda);
-        border-radius: 6px;
-        font-size: 0.5rem;
-        margin-bottom: 1.5rem;
-        box-sizing: border-box;
-        background-color: white;
-        transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    input[type=text]:focus,
-    input[type=email]:focus,
-    select:focus,
-    textarea:focus {
-        outline: none;
-        border-color: var(--azul);
-        box-shadow: 0 0 0 3px rgba(0, 43, 90, 0.15);
-    }
-    input[type=radio],
-    input[type=checkbox] {
-        margin-right: 0.4rem;
-        transform: scale(1.1);
-    }
-    .opcoes label {
-        font-weight: normal;
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.25rem;
-        cursor: pointer;
-        padding: 6px;
-        border-radius: 4px;
-        transition: background-color 0.15s;
-    }
-    .opcoes label:hover {
-        background-color: rgba(0, 43, 90, 0.05);
-    }
-    .opcoes + label,
-	.secao > label:first-of-type {
-    margin-top: 1.5rem; /* Ajuste o valor conforme quiser */
-	}
-    
-    textarea {
-        resize: vertical;
-        min-height: 100px;
-    }
-    button {
-        background-color: var(--azul);
-        color: white;
-        border: none;
-        padding: 14px 26px;
-        font-size: 1rem;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-    button:hover {
-        background-color: rgb(0, 30, 60);
-    }
-    .hidden {
-        display: none;
-    }
-    
-    .custom-file-upload {
-    display: inline-block;
-    cursor: pointer;
-    background-color: var(--azul);
-    color: white;
-    padding: 12px 22px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 6px;
-    text-align: center;
-    transition: background-color 0.2s;
-    margin-top: 5px;
-}
-
-.custom-file-upload:hover {
-    background-color: rgb(0, 30, 60);
-}
-
-.custom-file-upload input {
-    display: none; /* esconde o input padrão */
-}
-
-.custom-file-upload svg {
-    vertical-align: middle;
-    margin-right: 6px;
-    fill: white; /* garante que a seta fique branca */
-}
-
-.upload-container {
-    display: flex;
-    align-items: center;
-    gap: 12px; /* espaço entre o botão e o texto */
-}
-
-.upload-info {
-    font-size: 0.8rem;
-    color: var(--cinza-texto);
-}
-    
-/* Select estilizado com seta customizada */
-select {
-    color: #999; /* placeholder cinza */
-    width: 50%;
-    padding: 12px;
-    padding-right: 2.5rem;
-    border: 1px solid var(--borda);
-    border-radius: 6px;
-    font-size: 1rem;
-    margin-bottom: 1.2rem;
-    box-sizing: border-box;
-    background-color: white;
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'12'%20height%3D'7'%20viewBox%3D'0%200%2012%207'%20fill%3D'none'%20xmlns%3D'http://www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M1%201L6%206L11%201'%20stroke%3D'%23002b5a'%20stroke-width%3D'2'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 12px 7px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-/* Placeholder cinza, opções reais sempre pretas */
-select:invalid {
-    color: #999; /* placeholder cinza */
-}
-/* Placeholder cinza, opções reais sempre pretas */
-select:valid {
-    color: #000; /* placeholder preto */
-}
-select option {
-    color: #000; /* opções reais em preto */
-}
-
-
-/* Input estilizado com apenas uma linha */
-input[type=text],
-input[type=email],
-textarea {
-    border: none; /* remove todas as bordas */
-    border-bottom: 2px solid var(--borda); /* apenas borda inferior */
-    border-radius: 0; /* remove arredondamento */
-    padding: 0; /* só um padding vertical */
-    font-size: 1rem;
-    width: 50%;
-    background-color: transparent;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-}
-
-input[type=text]:focus,
-input[type=email]:focus,
-textarea:focus {
-    outline: none;
-    box-shadow: none; /* remove sombra ao focar */
-    border-bottom: 2px solid var(--azul); /* muda a cor da linha ao focar */
-}
-
-.input-outro-wrapper {
-    flex: 1;
-    position: relative;
-}
-
-.input-outro-wrapper input {
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid var(--borda);
-    padding: 0;
-    background: transparent;
-}
-
-.input-outro-wrapper input:focus {
-    outline: none;
-    border-bottom-color: var(--azul);
-}
-
-.linha-animada {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 0;
-    background-color: var(--azul);
-    transition: 0.3s;
-}
-
-.input-outro-wrapper input:focus + .linha-animada {
-    width: 100%;
-}
-
-.flex-com-outro {
-    display: flex;
-    width: 49%;
-    align-items: center; /* alinha verticalmente radio + label + input */
-    gap: 2px; /* espaço entre o radio e o texto "Outro" e o input */
-}
-
-.flex-com-outro input[type="radio"] {
-    margin: 5px; /* remove espaçamento padrão do navegador */
-}
-
-.flex-com-outro input[type="text"] {
-    flex: 1; /* ocupa o espaço restante */
-    margin: 0; /* remove margin padrão */
-    padding: 0; /* padding vertical pequeno */
-    border: none;
-    border-bottom: 2px solid var(--borda);
-    border-radius: 0;
-    background-color: transparent;
-}
-
-.flex-com-outro input[type="text"]:focus {
-    outline: none;
-    box-shadow: none;
-    border-bottom: 2px solid var(--azul);
-}
-
-.botoes {
-    display: flex;
-    justify-content: space-between; /* um botão de cada lado */
-    margin-top: 10px;
-}
-
-.botoes-pagina2 {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.botoes-pagina2 .esquerda button {
-    margin-right: 10px;
-}
-
-/*Modal*/
-
-.modal {
-    position: fixed;
-    z-index: 1000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0,0,0,0.5);
-}
-.modal-content {
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    max-width: 450px;
-    text-align: center; /* centraliza o texto */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* centraliza horizontalmente os filhos */
-}
-
-.modal-content h1 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    align-items: center; /* reforça centralização */
-}
-
-.modal-content p {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 20px;
-    text-align: center;
-}
-.modal-botoes {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-.modal-botoes button {
-    flex: 1;    
-	width:100px;
-    padding: 10px 0;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-.modal-botoes #cancelarLimpar { background: #ccc; color: #333; }
-.modal-botoes #cancelarLimpar:hover { background: #999; }
-.modal-botoes #confirmarLimpar { background: rgb(0,43,90); color: white; }
-.modal-botoes #confirmarLimpar:hover { background: rgb(0,30,60); }
-.hidden { display: none; }
-
-</style>
-</head>
-<body>
-
-<header id="talentos-header">
-    <h1>Formulário de Banco de Talentos</h1>
-    <br>
-    <p>Este formulário tem como objetivo <b>reunir informações de profissionais interessados em oportunidades conosco</b>, tanto para <b>futuras vagas</b> quanto para <b>candidaturas imediatas</b>, dependendo das oportunidades disponíveis no momento. Ao se cadastrar, seu perfil será<br>incluído em nosso <b>banco de talentos</b> e poderá ser considerado em <b>processos seletivos<br>atuais ou futuros</b>, conforme seu perfil e a demanda do mercado.
-    <br><br>
-    <b>IMPORTANTE:</b> Este formulário não garante participação em um processo seletivo ativo<br>para todas as vagas, mas nos ajuda a nos conectar com você e <b>nos antecipar a novas<br>oportunidades</b>.</p><br>
-    <p><span style="color:red"><b>*</b></span> <span style="color:#5f6368">Indica uma pergunta obrigatória</span></p>
-</header>
-
-<form action="https://script.google.com/macros/s/AKfycbzlpM_pG6W0L_8A1D0OO2ABJwigIkBP8OOe3TZzc9t8s4bOH3_v8wvt5WZ2g8h2re0cWg/exec" method="POST" enctype="multipart/form-data">
-    <!-- Página 1 - Informações Pessoais -->
-    <div id="pagina1">
-        <div class="secao">
-            <h2border>1. INFORMAÇÕES PESSOAIS</h2border>
-
-            <label>Nome Completo</label>
-            <input type="text" name="nome" required>
-
-            <label>E-mail</label>
-            <input type="email" name="email" 
-       required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$">
-
-            <label>Data de Nascimento</label>
-            <input type="text" name="nascimento" required>
-
-            <label>Gênero</label>
-        <div class="opcoes">
-            <label><input type="radio" name="genero" value="Feminino" required> Feminino</label>
-            <label><input type="radio" name="genero" value="Masculino"> Masculino</label>
-                <label class="flex-com-outro">
-                    <input type="radio" name="genero" value="Outro"> Outro:
-                    <div class="input-outro-wrapper">
-                        <input type="text" name="genero_outro" placeholder="" class="hidden">
-                        <span class="linha-animada"></span>
-                    </div>
-                </label>
-            </div>
-
-            <label>Estado Civil</label>
-            <div class="opcoes">
-                <label><input type="radio" name="estado_civil" value="Solteiro" required> Solteiro</label>
-                <label><input type="radio" name="estado_civil" value="Casado"> Casado</label>
-                <label><input type="radio" name="estado_civil" value="União Estável"> União Estável</label>
-                <label><input type="radio" name="estado_civil" value="Separado"> Separado</label>
-                <label><input type="radio" name="estado_civil" value="Divorciado"> Divorciado</label>
-                <label><input type="radio" name="estado_civil" value="Viúvo"> Viúvo</label>
-            </div>
-
-            <label>Filhos</label>
-            <div class="opcoes">
-                <label><input type="radio" name="filhos" value="Tenho um" required> Tenho um</label>
-                <label><input type="radio" name="filhos" value="Tenho dois"> Tenho dois</label>
-                <label><input type="radio" name="filhos" value="Tenho mais de dois"> Tenho mais de dois</label>
-                <label><input type="radio" name="filhos" value="Não tenho filhos"> Não tenho filhos</label>
-            </div>
-
-            <label>Cidade em que reside</label>
-            <select name="cidade" required>
-                <option value="" disabled selected>Selecione...</option>
-                <option>Águas Belas</option>
-                <option>Bom Conselho</option>
-                <option>Brejão</option>
-                <option>Caetés</option>
-                <option>Capoeiras</option>
-                <option>Canhotinho</option>
-                <option>Correntes</option>
-                <option>Garanhuns</option>
-                <option>Iatí</option>
-                <option>Jupi</option>
-                <option>Lajedo</option>
-                <option>Paranatama</option>
-                <option>Saloá</option>
-                <option>São Bento do Una</option>
-                <option>São João</option>
-                <option>Venturosa</option>
-            </select>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-        <button type="button" onclick="proximaPagina()">Avançar</button>
-        <button type="button" id="limpar-formulario1">Limpar Formulário</button>
-    </div>
-</div>
-
-    <!-- Página 2 - Informações Profissionais -->
-    <div id="pagina2" class="hidden">
-        <div class="secao">
-            <h2border>2. INFORMAÇÕES PROFISSIONAIS</h2border>
-
-            <label>Nível de escolaridade</label>
-            <select name="escolaridade" required>
-                <option value="">Selecione...</option>
-                <option>Não alfabetizado</option>
-                <option>Ensino Fundamental incompleto</option>
-                <option>Ensino Fundamental completo</option>
-                <option>Ensino Médio incompleto</option>
-                <option>Ensino Médio completo</option>
-                <option>Ensino Técnico</option>
-                <option>Ensino Superior incompleto</option>
-                <option>Ensino Superior completo</option>
-                <option>Pós-Graduação incompleta</option>
-                <option>Pós-Graduação completa</option>
-                <option>Mestrado</option>
-                <option>Doutorado</option>
-                <option>Pós-doutorado</option>
-            </select>
-
-            <label>Área profissional desejada</label>
-            <p class="descricao">Pode selecionar mais de um.</p>
-            <div class="opcoes">
-                <label><input type="checkbox" name="area[]" value="Administrador"> Administrador</label>
-                <label><input type="checkbox" name="area[]" value="Analista de RH"> Analista de RH</label>
-                <label><input type="checkbox" name="area[]" value="Assistente Administrativo"> Assistente Administrativo</label>
-                <label><input type="checkbox" name="area[]" value="Assistente de RH"> Assistente de RH</label>
-                <label><input type="checkbox" name="area[]" value="Auxiliar Administrativo"> Auxiliar Administrativo</label>
-                <label><input type="checkbox" name="area[]" value="Auxiliar de Carga e Descarga"> Auxiliar de Carga e Descarga</label>
-                <label><input type="checkbox" name="area[]" value="Auxiliar de RH"> Auxiliar de RH</label>
-                <label><input type="checkbox" name="area[]" value="Carpinteiro"> Carpinteiro</label>
-                <label><input type="checkbox" name="area[]" value="Estoquista"> Estoquista</label>
-                <label><input type="checkbox" name="area[]" value="Gerente de RH Generalista"> Gerente de RH Generalista</label>
-                <label><input type="checkbox" name="area[]" value="Operador de Caixa"> Operador de Caixa</label>
-                <label><input type="checkbox" name="area[]" value="Pedreiro"> Pedreiro</label>
-                <label><input type="checkbox" name="area[]" value="Recepcionista"> Recepcionista</label>
-                <label><input type="checkbox" name="area[]" value="Servente"> Servente</label>
-                <label><input type="checkbox" name="area[]" value="Serviços Gerais"> Serviços Gerais</label>
-                <label><input type="checkbox" name="area[]" value="Telemarketing"> Telemarketing</label>
-                <label><input type="checkbox" name="area[]" value="Vendedor Externo"> Vendedor Externo</label>
-                <label><input type="checkbox" name="area[]" value="Vendedor Interno"> Vendedor Interno</label>
-                <label class="flex-com-outro">
-                    <input type="checkbox" name="area[]" value="Outro"> Outro:
-                    <div class="input-outro-wrapper">
-                        <input type="text" name="area_outro" placeholder="" class="hidden">
-                        <span class="linha-animada"></span>
-                    </div>
-                </label>
-            </div>
-
-            <label>WhatsApp</label><p class="descricao">Adicione o DDD.</p>
-            <input type="text" name="whatsapp" placeholder="" required>
-
-            <label>Envie seu Currículo</label>
-            <div class="upload-container">
-                <label class="custom-file-upload">
-                    <input type="file" name="curriculo" accept=".pdf,.doc,.docx" required>
-                    <span>
-                        Enviar
-                    </span>
-                </label>
-                <small class="upload-info">Faça upload de 1 arquivo aceito: DOCX e PDF.<br>
-                O tamanho máximo é de 100 MB.</small>
-            </div>
-
-        </div>
-
-        <div class="secao">
-            <h2border>TERMO DE CONSENTIMENTO E PROTEÇÃO DE DADOS <span style="color:#5f6368"></span>*</h2border>
-            <p class="descricao">
-                Ao preencher e enviar este formulário, você concorda expressamente com a coleta,
-                armazenamento e tratamento dos seus dados pessoais nos termos da Lei Geral de
-                Proteção de Dados (LGPD - Lei nº 13.709/2018).
-            </p>
-            <label class="opcoes"><input type="checkbox" name="termo" required> Li e concordo</label>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div>
-            <button type="button" onclick="voltarPagina()">Voltar</button>
-            <button type="submit">Enviar</button>
-        </div>
-        <button type="button" id="limpar-formulario2">Limpar Formulário</button>
-    </div>
-</div>
-</form>
-
-<!-- Modal de confirmação -->
-<div id="modalLimpar" class="modal hidden">
-  <div class="modal-content">
-    <h1>Limpar o formulário?</h1>
-    <p>Com isso, todas as respostas serão removidas.<br>Não será possível desfazer esta ação.</p>
-    <div class="modal-botoes">
-      <button id="cancelarLimpar">Cancelar</button>
-      <button id="confirmarLimpar">Confirmar</button>
-    </div>
-  </div>
-</div>
-
-<!-- Modal de aviso -->
-<div id="modalAviso" class="modal hidden">
-  <div class="modal-content">
-    <h1>Atenção!</h1>
-    <p id="mensagemAviso"></p>
-    <div class="modal-botoes">
-      <button id="fecharAviso">Ok</button>
-    </div>
-  </div>
-</div>
-
-<script>
-    // Botão de páginas
-    function proximaPagina() {
-        document.getElementById('pagina1').classList.add('hidden');
-        document.getElementById('pagina2').classList.remove('hidden');
-    }
-    function voltarPagina() {
-        document.getElementById('pagina2').classList.add('hidden');
-        document.getElementById('pagina1').classList.remove('hidden');
-    }
-
-    // Máscaras de input
-    const nascimento = document.querySelector('input[name="nascimento"]');
-    nascimento.addEventListener("input", function() {
-        let valor = this.value.replace(/\D/g, "");
-        if (valor.length > 8) valor = valor.slice(0,8);
-        valor = valor.replace(/^(\d{2})(\d)/, "$1/$2");
-        valor = valor.replace(/^(\d{2})\/(\d{2})(\d)/, "$1/$2/$3");
-        this.value = valor;
-    });
-
-    const whatsapp = document.querySelector('input[name="whatsapp"]');
-    whatsapp.addEventListener("input", function() {
-        let valor = this.value.replace(/\D/g, "");
-        if (valor.length > 11) valor = valor.slice(0,11);
-        valor = valor.replace(/^(\d{2})(\d)/, "($1) $2");
-        valor = valor.replace(/(\d{5})(\d)/, "$1-$2");
-        this.value = valor;
-    });
-    
-    const emailInput = document.querySelector('input[name="email"]');
-
-emailInput.addEventListener('input', () => {
-    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailInput.value);
-    emailInput.style.borderBottomColor = emailValido ? 'green' : 'red';
+	JotForm.init(function(){
+	/*INIT-START*/
+if (window.JotForm && JotForm.accessible) $('input_36').setAttribute('tabindex',0);
+      JotForm.setInputTextMasking( 'input_36', '\u0023\u0023\u002f\u0023\u0023\u002f\u0023\u0023\u0023\u0023' );
+      JotForm.setPhoneMaskingValidator( 'input_13_full', '\u0028\u0023\u0023\u0029 \u0023 \u0023\u0023\u0023\u0023\u002d\u0023\u0023\u0023\u0023' );
+if (window.JotForm && JotForm.accessible) $('input_35').setAttribute('tabindex',0);
+      setTimeout(function() {
+          JotForm.initMultipleUploads();
+      }, 2);
+	/*INIT-END*/
 	});
 
-    // Campo “Outro” gênero
-    const generoOutroRadio = document.querySelector('input[name="genero"][value="Outro"]');
-    const generoOutroInput = document.querySelector('input[name="genero_outro"]');
-
-    generoOutroRadio.addEventListener('change', () => {
-        generoOutroInput.classList.remove('hidden');
-    });
-
-    document.querySelectorAll('input[name="genero"]').forEach(radio => {
-        if (radio.value !== 'Outro') {
-            radio.addEventListener('change', () => {
-                generoOutroInput.classList.add('hidden');
-            });
-        }
-    });
-
-    // Área profissional “Outro”
-    const areaOutroCheckbox = document.querySelector('input[name="area[]"][value="Outro"]');
-    const areaOutroInput = document.querySelector('input[name="area_outro"]');
-
-    areaOutroCheckbox.addEventListener('change', () => {
-        if(areaOutroCheckbox.checked) {
-            areaOutroInput.classList.remove('hidden');
-        } else {
-            areaOutroInput.classList.add('hidden');
-        }
-    });
-
-    // Cor do Selecione
-    document.querySelectorAll('select').forEach(sel => {
-    sel.addEventListener('change', function() {
-        if(this.value !== "") {
-            this.classList.add('valid'); // texto preto
-        } else {
-            this.classList.remove('valid'); // volta para cinza
-        }
-    });
-});
-
-    // Limpar Formulário
-
-let botaoAtual = null; // para saber se é página1 ou página2
-
-// abrir modal
-function abrirModal(botao) {
-    botaoAtual = botao;
-    document.getElementById('modalLimpar').classList.remove('hidden');
-}
-
-// fechar modal
-function fecharModal() {
-    document.getElementById('modalLimpar').classList.add('hidden');
-}
-
-// ação confirmar
-document.getElementById('confirmarLimpar').addEventListener('click', function() {
-    document.getElementById('formulario').reset();
-    fecharModal();
-    if(botaoAtual === 2) {
-        voltarPagina(); // opcional: volta para página 1 se for página 2
-    }
-});
-
-// ação cancelar
-document.getElementById('cancelarLimpar').addEventListener('click', fecharModal);
-
-// substituir os antigos confirm()
-document.getElementById('limpar-formulario1').addEventListener('click', function() {
-    abrirModal(1);
-});
-document.getElementById('limpar-formulario2').addEventListener('click', function() {
-    abrirModal(2);
-});
-
-// Validar Página
-function mostrarAviso(mensagem) {
-    document.getElementById('mensagemAviso').textContent = mensagem;
-    document.getElementById('modalAviso').classList.remove('hidden');
-}
-
-document.getElementById('fecharAviso').addEventListener('click', function() {
-    document.getElementById('modalAviso').classList.add('hidden');
-});
-
-function validarPagina(paginaId) {
-    const pagina = document.getElementById(paginaId);
-    const campos = pagina.querySelectorAll("input[required], select[required], textarea[required]");
-
-    for (let campo of campos) {
-        if (campo.type === "radio" || campo.type === "checkbox") {
-            const grupo = pagina.querySelectorAll(`[name="${campo.name}"]`);
-            if (![...grupo].some(c => c.checked)) {
-                mostrarAviso("Preencha todos os campos obrigatórios antes de continuar.");
-                campo.focus();
-                return false;
-            }
-        } else if (!campo.value.trim()) {
-            mostrarAviso("Preencha todos os campos obrigatórios antes de continuar.");
-            campo.focus();
-            return false;
-        }
-    }
-    return true;
-}
-
-function proximaPagina() {
-    if (validarPagina("pagina1")) {
-        document.getElementById('pagina1').classList.add('hidden');
-        document.getElementById('pagina2').classList.remove('hidden');
-    }
-}
-
-document.getElementById("formulario").addEventListener("submit", function(event) {
-    if (!validarPagina("pagina1") || !validarPagina("pagina2")) {
-        event.preventDefault();
-    }
-});
-    
+   setTimeout(function() {
+JotForm.paymentExtrasOnTheFly([null,null,null,null,null,null,null,null,{"description":"","name":"envieSeu","qid":"8","subLabel":"","text":"Envie seu curriculo:","type":"control_fileupload"},{"name":"_nbsp_","qid":"9","text":"Enviar","type":"control_button"},null,null,{"description":"","name":"email","qid":"12","subLabel":"","text":"E-mail","type":"control_email"},{"description":"","name":"whatsapp","qid":"13","text":"WhatsApp:","type":"control_phone"},null,null,null,null,null,null,null,{"description":"","name":"genero","qid":"21","text":"Genero","type":"control_radio"},{"description":"","name":"estadoCivil","qid":"22","text":"Estado civil:","type":"control_radio"},{"name":"pageBreak","qid":"23","text":"Page Break","type":"control_pagebreak"},{"description":"","name":"nomeCompleto","qid":"24","text":"Nome completo:","type":"control_fullname"},null,{"description":"","name":"filhos","qid":"26","text":"Filhos:","type":"control_radio"},{"description":"","name":"cidadeEm","qid":"27","subLabel":"","text":"Cidade em que reside:","type":"control_dropdown"},{"description":"","name":"nivelDe","qid":"28","subLabel":"","text":"Nivel de escolaridade:","type":"control_dropdown"},null,{"description":"","name":"areaProfissional30","qid":"30","text":"Area profissional desejada:","type":"control_checkbox"},{"description":"","name":"disponibilidadePara","qid":"31","text":"Disponibilidade para mudanca de cidade\u002Festado:","type":"control_radio"},{"description":"","name":"disponibilidadePara32","qid":"32","text":"Disponibilidade para viagens:","type":"control_radio"},{"description":"","name":"vocePossui","qid":"33","text":"Voce possui carteira de habilitacao valida?","type":"control_radio"},{"description":"","name":"seSim","qid":"34","text":"Se sim, qual a categoria da sua carteira de habilitacao?","type":"control_radio"},{"description":"","mde":"No","name":"informacoesAdicionais","qid":"35","subLabel":"Destaque seus pontos relevantes como diferencial. (Ex: Cursos, habilidades etc.)  ","text":"Informacoes Adicionais:","type":"control_textarea","wysiwyg":"Disable"},{"description":"","name":"dataDe","qid":"36","subLabel":"","text":"Data de nascimento","type":"control_textbox"},null,null,null,null,null,{"description":"","name":"termoDe","qid":"42","text":"Ao preencher e enviar este formulario, voce concorda expressamente com a coleta, armazenamento e tratamento dos seus dados pessoais nos termos da Lei Geral de Protecao de Dados (LGPD - Lei nº 13.709\u002F2018).","type":"control_checkbox"},null,{"name":"input44","qid":"44","text":"Formulario de Banco de Talentos\r\nEste formulario tem como objetivo reunir informacoes de profissionais interessados em oportunidades conosco, tanto para futuras vagas quanto para candidaturas imediatas, dependendo das oportunidades disponiveis no momento. Ao se cadastrar, seu perfil sera incluido em nosso banco de talentos e podera ser considerado em processos seletivos atuais ou futuros, conforme seu perfil e a demanda do mercado.\r\nIMPORTANTE: Este formulario nao garante participacao em um processo seletivo ativo para todas as vagas, mas nos ajuda a nos conectar com voce e nos antecipar a novas oportunidades.","type":"control_text"},{"name":"divider","qid":"45","text":"Divider","type":"control_divider"},{"name":"divider46","qid":"46","text":"Divider","type":"control_divider"}]);}, 20); 
 </script>
-</body>
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/stylebuilder/static/form-common.css?v=37a7cbe
+"/>
+<style type="text/css">@media print{*{-webkit-print-color-adjust: exact !important;color-adjust: exact !important;}.form-section{display:inline!important}.form-pagebreak{display:none!important}.form-section-closed{height:auto!important}.page-section{position:initial!important}}</style>
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.64743&themeRevisionID=63a2351435646363a50e3ee0"/>
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_styles.css?3.3.64743" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_feature.css?3.3.64743" />
+<style type="text/css" id="form-designer-style">
+    /* Injected CSS Code */
+/*PREFERENCES STYLE*/
+    .form-all {
+      font-family: Arial, sans-serif;
+    }
+  
+    .form-label.form-label-auto {
+      
+    display: block;
+    float: none;
+    text-align: left;
+    width: 100%;
+  
+    }
+  
+    .form-line {
+      margin-top: 12px 36px 12px 36px px;
+      margin-bottom: 12px 36px 12px 36px px;
+    }
+  
+    .form-all {
+      max-width: 752px;
+      width: 100%;
+    }
+  
+    .form-label.form-label-left,
+    .form-label.form-label-right,
+    .form-label.form-label-left.form-label-auto,
+    .form-label.form-label-right.form-label-auto {
+      width: 230px;
+    }
+  
+    .form-all {
+      font-size: 16px
+    }
+  
+    .supernova .form-all, .form-all {
+      background-color: #fff;
+    }
+  
+    .form-all {
+      color: #000000;
+    }
+    .form-header-group .form-header {
+      color: #000000;
+    }
+    .form-header-group .form-subHeader {
+      color: #000000;
+    }
+    .form-label-top,
+    .form-label-left,
+    .form-label-right,
+    .form-html,
+    .form-checkbox-item label,
+    .form-radio-item label,
+    span.FITB .qb-checkbox-label,
+    span.FITB .qb-radiobox-label,
+    span.FITB .form-radio label,
+    span.FITB .form-checkbox label,
+    [data-blotid][data-type=checkbox] [data-labelid],
+    [data-blotid][data-type=radiobox] [data-labelid],
+    span.FITB-inptCont[data-type=checkbox] label,
+    span.FITB-inptCont[data-type=radiobox] label {
+      color: #000000;
+    }
+    .form-sub-label {
+      color: #1a1a1a;
+    }
+  
+  .supernova {
+    background-color: rgba(255,255,255,0);
+  }
+  .supernova body {
+    background: transparent;
+  }
+  
+    .form-textbox,
+    .form-textarea,
+    .form-dropdown,
+    .form-radio-other-input,
+    .form-checkbox-other-input,
+    .form-captcha input,
+    .form-spinner input {
+      background-color: #fff;
+    }
+  
+      
+    .supernova {
+      background-repeat: no-repeat;
+      background-size:cover;
+      background-attachment: fixed;
+      background-position: center top;
+    }
 
-</html>
+      .supernova, #stage {
+        background-image: none;
+      }
+    
+      .form-all {
+        background-image: none;
+      }
+    /*PREFERENCES STYLE*//*__INSPECT_SEPERATOR__*/
+    /* Injected CSS Code */
+</style>
 
+<form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" action="https://submit.jotform.com/submit/252284698364672" method="post" enctype="multipart/form-data" name="form_252284698364672" id="252284698364672" accept-charset="utf-8" autocomplete="on"><input type="hidden" name="formID" value="252284698364672" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1755460717824" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="submitDate" name="submitDate" value="undefined" /><input type="hidden" id="buildDate" name="buildDate" value="1755460717824" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
+  <div role="main" class="form-all">
+    <ul class="form-section page-section" role="presentation">
+      <li class="form-line" data-type="control_text" id="id_44">
+        <div id="cid_44" class="form-input-wide" data-layout="full">
+          <div id="text_44" class="form-html" data-component="text" tabindex="-1">
+            <p><span style="font-size: 14pt;"><strong>Formulário de Banco de Talentos</strong></span></p>
+            <p>Este formulário tem como objetivo <strong>reunir informações de profissionais interessados em oportunidades conosco</strong>, tanto para <strong>futuras vagas</strong> quanto para <strong>candidaturas imediatas</strong>, dependendo das oportunidades disponíveis no momento. Ao se cadastrar, seu perfil será incluído em nosso <strong>banco de talentos</strong> e poderá ser considerado em <strong>processos seletivos atuais ou futuros</strong>, conforme seu perfil e a demanda do mercado.</p>
+            <p><strong>IMPORTANTE:</strong> Este formulário não garante participação em um processo seletivo ativo para todas as vagas, mas nos ajuda a nos conectar com você e <strong>nos antecipar a novas oportunidades</strong>.</p>
+          </div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_divider" id="id_45">
+        <div id="cid_45" class="form-input-wide" data-layout="full">
+          <div class="divider" data-component="divider" style="border-bottom-width:1px;border-bottom-style:solid;border-color:#a8b1ec;height:1px;margin-left:0px;margin-right:0px;margin-top:5px;margin-bottom:5px"></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_fullname" id="id_24"><label class="form-label form-label-top form-label-auto" id="label_24" for="first_24" aria-hidden="false"> Nome completo:<span class="form-required">*</span> </label>
+        <div id="cid_24" class="form-input-wide jf-required" data-layout="full">
+          <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_24" name="q24_nomeCompleto[first]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_24 given-name" size="10" data-component="first" aria-labelledby="label_24" required="" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_24" name="q24_nomeCompleto[last]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_24 family-name" size="15" data-component="last" aria-labelledby="label_24" required="" value="" /></span></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_textbox" id="id_36"><label class="form-label form-label-top form-label-auto" id="label_36" for="input_36" aria-hidden="false"> Data de nascimento<span class="form-required">*</span> </label>
+        <div id="cid_36" class="form-input-wide jf-required" data-layout="half"> <input type="text" id="input_36" name="q36_dataDe" data-type="input-textbox" class="form-textbox validate[required, Fill Mask]" data-defaultvalue="" style="width:310px" size="310" data-masked="true" placeholder="DD/MM/AAAA" data-component="textbox" aria-labelledby="label_36" required="" value="" /> </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_radio" id="id_21"><label class="form-label form-label-top form-label-auto" id="label_21" aria-hidden="false"> Gênero<span class="form-required">*</span> </label>
+        <div id="cid_21" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-single-column" role="group" aria-labelledby="label_21" data-component="radio"><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_21" type="radio" class="form-radio validate[required]" id="input_21_0" name="q21_genero" required="" value="Feminino" /><label id="label_input_21_0" for="input_21_0">Feminino</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_21" type="radio" class="form-radio validate[required]" id="input_21_1" name="q21_genero" required="" value="Masculino" /><label id="label_input_21_1" for="input_21_1">Masculino</label></span><span class="form-radio-item formRadioOther" style="clear:left"><input type="radio" data-calcvalue="" class="form-radio-other form-radio validate[required]" name="q21_genero" id="other_21" tabindex="0" aria-label="Outro:" value="other" /><label id="label_other_21" style="text-indent:0" for="other_21">Outro:</label><span id="other_21_input" class="other-input-container" style="display:none"><input type="text" class="form-radio-other-input form-textbox" name="q21_genero[other]" data-otherhint="Outro:" size="15" id="input_21" data-placeholder="Please type another option here" placeholder="Please type another option here" /></span></span></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_radio" id="id_22"><label class="form-label form-label-top form-label-auto" id="label_22" aria-hidden="false"> Estado civil:<span class="form-required">*</span> </label>
+        <div id="cid_22" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-single-column" role="group" aria-labelledby="label_22" data-component="radio"><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_22" type="radio" class="form-radio validate[required]" id="input_22_0" name="q22_estadoCivil" required="" value="Solteiro" /><label id="label_input_22_0" for="input_22_0">Solteiro</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_22" type="radio" class="form-radio validate[required]" id="input_22_1" name="q22_estadoCivil" required="" value="Casado" /><label id="label_input_22_1" for="input_22_1">Casado</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_22" type="radio" class="form-radio validate[required]" id="input_22_2" name="q22_estadoCivil" required="" value="União Estável" /><label id="label_input_22_2" for="input_22_2">União Estável</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_22" type="radio" class="form-radio validate[required]" id="input_22_3" name="q22_estadoCivil" required="" value="Separado" /><label id="label_input_22_3" for="input_22_3">Separado</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_22" type="radio" class="form-radio validate[required]" id="input_22_4" name="q22_estadoCivil" required="" value="Divorciado" /><label id="label_input_22_4" for="input_22_4">Divorciado</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_22" type="radio" class="form-radio validate[required]" id="input_22_5" name="q22_estadoCivil" required="" value="Viúvo" /><label id="label_input_22_5" for="input_22_5">Viúvo</label></span></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_radio" id="id_26"><label class="form-label form-label-top form-label-auto" id="label_26" aria-hidden="false"> Filhos:<span class="form-required">*</span> </label>
+        <div id="cid_26" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-single-column" role="group" aria-labelledby="label_26" data-component="radio"><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_26" type="radio" class="form-radio validate[required]" id="input_26_0" name="q26_filhos" required="" value="Tenho um" /><label id="label_input_26_0" for="input_26_0">Tenho um</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_26" type="radio" class="form-radio validate[required]" id="input_26_1" name="q26_filhos" required="" value="Tenho dois" /><label id="label_input_26_1" for="input_26_1">Tenho dois</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_26" type="radio" class="form-radio validate[required]" id="input_26_2" name="q26_filhos" required="" value="Tenho mais de dois" /><label id="label_input_26_2" for="input_26_2">Tenho mais de dois</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_26" type="radio" class="form-radio validate[required]" id="input_26_3" name="q26_filhos" required="" value="Não tenho filhos" /><label id="label_input_26_3" for="input_26_3">Não tenho filhos</label></span></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_dropdown" id="id_27"><label class="form-label form-label-top form-label-auto" id="label_27" for="input_27" aria-hidden="false"> Cidade em que reside:<span class="form-required">*</span> </label>
+        <div id="cid_27" class="form-input-wide jf-required" data-layout="half"> <select class="form-dropdown validate[required]" id="input_27" name="q27_cidadeEm" style="width:310px" data-component="dropdown" required="" aria-label="Cidade em que reside:">
+            <option value="">Selecione</option>
+            <option value="Águas Belas">Águas Belas</option>
+            <option value="Bom Conselho">Bom Conselho</option>
+            <option value="Brejão">Brejão</option>
+            <option value="Caetés">Caetés</option>
+            <option value="Capoeiras">Capoeiras</option>
+            <option value="Canhotinho">Canhotinho</option>
+            <option value="Correntes">Correntes</option>
+            <option value="Garanhuns">Garanhuns</option>
+            <option value="Iatí">Iatí</option>
+            <option value="Jupi">Jupi</option>
+            <option value="Lajedo">Lajedo</option>
+            <option value="Paranatama">Paranatama</option>
+            <option value="Saloá">Saloá</option>
+            <option value="São Bento do Una">São Bento do Una</option>
+            <option value="São João">São João</option>
+            <option value="Venturosa">Venturosa</option>
+          </select> </div>
+      </li>
+      <li id="cid_23" class="form-input-wide" data-type="control_pagebreak">
+        <div class="form-pagebreak" data-component="pagebreak">
+          <div class="form-pagebreak-back-container"><button id="form-pagebreak-back_23" type="button" class="form-pagebreak-back  form-submit-button-blue-400 jf-form-buttons" data-component="pagebreak-back">Voltar</button></div>
+          <div class="form-pagebreak-next-container"><button id="form-pagebreak-next_23" type="button" class="form-pagebreak-next  form-submit-button-blue-400 jf-form-buttons" data-component="pagebreak-next">Próximo</button></div>
+          <div style="clear:both" class="pageInfo form-sub-label" id="pageInfo_23"></div>
+        </div>
+      </li>
+    </ul>
+    <ul class="form-section page-section" role="presentation" style="display:none;">
+      <li class="form-line jf-required" data-type="control_dropdown" id="id_28"><label class="form-label form-label-top form-label-auto" id="label_28" for="input_28" aria-hidden="false"> Nível de escolaridade:<span class="form-required">*</span> </label>
+        <div id="cid_28" class="form-input-wide jf-required" data-layout="half"> <select class="form-dropdown validate[required]" id="input_28" name="q28_nivelDe" style="width:310px" data-component="dropdown" required="" aria-label="Nível de escolaridade:">
+            <option value="">Selecione</option>
+            <option value="Não alfabetizado">Não alfabetizado</option>
+            <option value="Ensino Fundamental incompleto">Ensino Fundamental incompleto</option>
+            <option value="Ensino Fundamental completo">Ensino Fundamental completo</option>
+            <option value="Ensino Médio incompleto">Ensino Médio incompleto</option>
+            <option value="Ensino Médio completo">Ensino Médio completo</option>
+            <option value="Ensino Técnico">Ensino Técnico</option>
+            <option value="Ensino Superior incompleto">Ensino Superior incompleto</option>
+            <option value="Ensino Superior completo">Ensino Superior completo</option>
+            <option value="Pós-Graduação incompleta">Pós-Graduação incompleta</option>
+            <option value="Pós-Graduação completa">Pós-Graduação completa</option>
+            <option value="Mestrado">Mestrado</option>
+            <option value="Doutorado">Doutorado</option>
+            <option value="Pós-doutorado">Pós-doutorado</option>
+          </select> </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_checkbox" id="id_30"><label class="form-label form-label-top form-label-auto" id="label_30" aria-hidden="false"> Área profissional desejada:<span class="form-required">*</span> </label>
+        <div id="cid_30" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-single-column" role="group" aria-labelledby="label_30" data-component="checkbox"><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_0" name="q30_areaProfissional30[]" required="" value="Administrador" /><label id="label_input_30_0" for="input_30_0">Administrador</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_1" name="q30_areaProfissional30[]" required="" value="Analista de RH" /><label id="label_input_30_1" for="input_30_1">Analista de RH</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_2" name="q30_areaProfissional30[]" required="" value="Assistente Administrativo" /><label id="label_input_30_2" for="input_30_2">Assistente Administrativo</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_3" name="q30_areaProfissional30[]" required="" value="Assistente de RH" /><label id="label_input_30_3" for="input_30_3">Assistente de RH</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_4" name="q30_areaProfissional30[]" required="" value="Auxiliar Administrativo" /><label id="label_input_30_4" for="input_30_4">Auxiliar Administrativo</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_5" name="q30_areaProfissional30[]" required="" value="Auxiliar de Carga e Descarga" /><label id="label_input_30_5" for="input_30_5">Auxiliar de Carga e Descarga</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_6" name="q30_areaProfissional30[]" required="" value="Auxiliar de RH" /><label id="label_input_30_6" for="input_30_6">Auxiliar de RH</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_7" name="q30_areaProfissional30[]" required="" value="Carpinteiro" /><label id="label_input_30_7" for="input_30_7">Carpinteiro</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_8" name="q30_areaProfissional30[]" required="" value="Estoquista" /><label id="label_input_30_8" for="input_30_8">Estoquista</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_9" name="q30_areaProfissional30[]" required="" value="Gerente de RH Generalista" /><label id="label_input_30_9" for="input_30_9">Gerente de RH Generalista</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_10" name="q30_areaProfissional30[]" required="" value="Operador de Caixa" /><label id="label_input_30_10" for="input_30_10">Operador de Caixa</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_11" name="q30_areaProfissional30[]" required="" value="Pedreiro" /><label id="label_input_30_11" for="input_30_11">Pedreiro</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_12" name="q30_areaProfissional30[]" required="" value="Recepcionista" /><label id="label_input_30_12" for="input_30_12">Recepcionista</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_13" name="q30_areaProfissional30[]" required="" value="Servente" /><label id="label_input_30_13" for="input_30_13">Servente</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_14" name="q30_areaProfissional30[]" required="" value="Serviços Gerais" /><label id="label_input_30_14" for="input_30_14">Serviços Gerais</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_15" name="q30_areaProfissional30[]" required="" value="Telemarketing" /><label id="label_input_30_15" for="input_30_15">Telemarketing</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_16" name="q30_areaProfissional30[]" required="" value="Vendedor Externo" /><label id="label_input_30_16" for="input_30_16">Vendedor Externo</label></span><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_30" type="checkbox" class="form-checkbox validate[required]" id="input_30_17" name="q30_areaProfissional30[]" required="" value="Vendedor Interno" /><label id="label_input_30_17" for="input_30_17">Vendedor Interno</label></span><span class="form-checkbox-item formCheckboxOther" style="clear:left"><input type="checkbox" class="form-checkbox-other form-checkbox validate[required]" name="q30_areaProfissional30[other]" id="other_30" tabindex="0" aria-label="Other" value="other" /><label id="label_other_30" style="text-indent:0" for="other_30">Other</label><span id="other_30_input" class="other-input-container" style="display:none"><input type="text" class="form-checkbox-other-input form-textbox" name="q30_areaProfissional30[other]" data-otherhint="Other" size="15" id="input_30" data-placeholder="Please type another option here" placeholder="Please type another option here" /></span></span></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_radio" id="id_31"><label class="form-label form-label-top form-label-auto" id="label_31" aria-hidden="false"> Disponibilidade para mudança de cidade/estado:<span class="form-required">*</span> </label>
+        <div id="cid_31" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-single-column" role="group" aria-labelledby="label_31" data-component="radio"><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_31" type="radio" class="form-radio validate[required]" id="input_31_0" name="q31_disponibilidadePara" required="" value="Sim" /><label id="label_input_31_0" for="input_31_0">Sim</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_31" type="radio" class="form-radio validate[required]" id="input_31_1" name="q31_disponibilidadePara" required="" value="Não" /><label id="label_input_31_1" for="input_31_1">Não</label></span></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_radio" id="id_32"><label class="form-label form-label-top form-label-auto" id="label_32" aria-hidden="false"> Disponibilidade para viagens:<span class="form-required">*</span> </label>
+        <div id="cid_32" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-single-column" role="group" aria-labelledby="label_32" data-component="radio"><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_32" type="radio" class="form-radio validate[required]" id="input_32_0" name="q32_disponibilidadePara32" required="" value="Sim" /><label id="label_input_32_0" for="input_32_0">Sim</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_32" type="radio" class="form-radio validate[required]" id="input_32_1" name="q32_disponibilidadePara32" required="" value="Não" /><label id="label_input_32_1" for="input_32_1">Não</label></span></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_radio" id="id_33"><label class="form-label form-label-top form-label-auto" id="label_33" aria-hidden="false"> Você possui carteira de habilitação válida?<span class="form-required">*</span> </label>
+        <div id="cid_33" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-single-column" role="group" aria-labelledby="label_33" data-component="radio"><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_33" type="radio" class="form-radio validate[required]" id="input_33_0" name="q33_vocePossui" required="" value="Sim" /><label id="label_input_33_0" for="input_33_0">Sim</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_33" type="radio" class="form-radio validate[required]" id="input_33_1" name="q33_vocePossui" required="" value="Não" /><label id="label_input_33_1" for="input_33_1">Não</label></span></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_radio" id="id_34"><label class="form-label form-label-top form-label-auto" id="label_34" aria-hidden="false"> Se sim, qual a categoria da sua carteira de habilitação?<span class="form-required">*</span> </label>
+        <div id="cid_34" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-single-column" role="group" aria-labelledby="label_34" data-component="radio"><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_34" type="radio" class="form-radio validate[required]" id="input_34_0" name="q34_seSim" required="" value="A" /><label id="label_input_34_0" for="input_34_0">A</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_34" type="radio" class="form-radio validate[required]" id="input_34_1" name="q34_seSim" required="" value="B" /><label id="label_input_34_1" for="input_34_1">B</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_34" type="radio" class="form-radio validate[required]" id="input_34_2" name="q34_seSim" required="" value="C" /><label id="label_input_34_2" for="input_34_2">C</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_34" type="radio" class="form-radio validate[required]" id="input_34_3" name="q34_seSim" required="" value="D" /><label id="label_input_34_3" for="input_34_3">D</label></span><span class="form-radio-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_34" type="radio" class="form-radio validate[required]" id="input_34_4" name="q34_seSim" required="" value="E" /><label id="label_input_34_4" for="input_34_4">E</label></span><span class="form-radio-item formRadioOther" style="clear:left"><input type="radio" class="form-radio-other form-radio validate[required]" name="q34_seSim" id="other_34" tabindex="0" aria-label="Outra:" value="other" /><label id="label_other_34" style="text-indent:0" for="other_34">Outra:</label><span id="other_34_input" class="other-input-container" style="display:none"><input type="text" class="form-radio-other-input form-textbox" name="q34_seSim[other]" data-otherhint="Outra:" size="15" id="input_34" data-placeholder="Please type another option here" placeholder="Please type another option here" /></span></span></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_phone" id="id_13"><label class="form-label form-label-top" id="label_13" for="input_13_full"> WhatsApp:<span class="form-required">*</span> </label>
+        <div id="cid_13" class="form-input-wide jf-required" data-layout="half"> <span class="form-sub-label-container" style="vertical-align:top"><input type="tel" id="input_13_full" name="q13_whatsapp[full]" data-type="mask-number" class="mask-phone-number form-textbox validate[required, Fill Mask]" data-defaultvalue="" autoComplete="section-input_13 tel" style="width:310px" data-masked="true" placeholder="(00) 0 0000-0000" data-component="phone" aria-labelledby="label_13" required="" value="" /></span> </div>
+      </li>
+      <li class="form-line form-line-column form-col-1 form-line-column-clear jf-required" data-type="control_email" id="id_12"><label class="form-label form-label-top" id="label_12" for="input_12" aria-hidden="false"> E-mail<span class="form-required">*</span> </label>
+        <div id="cid_12" class="form-input-wide jf-required" data-layout="half"> <input type="email" id="input_12" name="q12_email" class="form-textbox validate[required, Email]" data-defaultvalue="" autoComplete="section-input_12 email" style="width:310px" size="310" data-component="email" aria-labelledby="label_12" required="" value="" /> </div>
+      </li>
+      <li class="form-line" data-type="control_textarea" id="id_35"><label class="form-label form-label-top form-label-auto" id="label_35" for="input_35" aria-hidden="false"> Informações Adicionais: </label>
+        <div id="cid_35" class="form-input-wide" data-layout="full"> <span class="form-sub-label-container" style="vertical-align:top"><textarea id="input_35" class="form-textarea" name="q35_informacoesAdicionais" style="width:648px;height:163px" data-component="textarea" aria-labelledby="label_35 sublabel_input_35"></textarea><label class="form-sub-label" for="input_35" id="sublabel_input_35" style="min-height:13px">Destaque seus pontos relevantes como diferencial. (Ex: Cursos, habilidades etc.)  </label></span> </div>
+      </li>
+      <li class="form-line form-line-column form-col-1 jf-required" data-type="control_fileupload" id="id_8"><label class="form-label form-label-top" id="label_8" for="input_8" aria-hidden="false"> Envie seu currículo:<span class="form-required">*</span> </label>
+        <div id="cid_8" class="form-input-wide jf-required" data-layout="full">
+          <div class="jfQuestion-fields" data-wrapper-react="true">
+            <div class="jfField isFilled">
+              <div class="jfUpload-wrapper">
+                <div class="jfUpload-container">
+                  <div class="jfUpload-button-container">
+                    <div class="jfUpload-button" aria-hidden="true" tabindex="0" style="display:none" data-version="v2">Adicionar arquivo<div class="jfUpload-heading forDesktop">Drag and drop files here</div>
+                      <div class="jfUpload-heading forMobile">Choose a file</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="jfUpload-files-container">
+                  <div class="validate[multipleUpload]"><input type="file" id="input_8" name="q8_envieSeu[]" multiple="" class="form-upload-multiple validate[required]" data-imagevalidate="yes" data-file-accept="pdf, doc, docx," data-limit-file-size="Yes" data-file-maxsize="10240" data-file-minsize="0" data-file-limit="1" data-component="fileupload" required="" aria-label="Adicionar arquivo" /></div>
+                </div>
+              </div>
+              <div data-wrapper-react="true"></div>
+            </div><span style="display:none" class="cancelText">Cancel</span><span style="display:none" class="ofText">of</span>
+          </div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_divider" id="id_46">
+        <div id="cid_46" class="form-input-wide" data-layout="full">
+          <div class="divider" data-component="divider" style="border-bottom-width:1px;border-bottom-style:solid;border-color:#e6e6e6;height:1px;margin-left:0px;margin-right:0px;margin-top:5px;margin-bottom:5px"></div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_checkbox" id="id_42"><label class="form-label form-label-top form-label-auto" id="label_42" for="input_42_0" aria-hidden="false"> Ao preencher e enviar este formulário, você concorda expressamente com a coleta, armazenamento e tratamento dos seus dados pessoais nos termos da Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).<span class="form-required">*</span> </label>
+        <div id="cid_42" class="form-input-wide jf-required" data-layout="full">
+          <div class="form-single-column" role="group" aria-labelledby="label_42" data-component="checkbox"><span class="form-checkbox-item" style="clear:left"><span class="dragger-item"></span><input aria-describedby="label_42" type="checkbox" class="form-checkbox validate[required]" id="input_42_0" name="q42_termoDe[]" required="" value="Eu li e aceito." /><label id="label_input_42_0" for="input_42_0">Eu li e aceito.</label></span></div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_button" id="id_9">
+        <div id="cid_9" class="form-input-wide" data-layout="full">
+          <div data-align="center" class="form-buttons-wrapper form-buttons-center   jsTest-button-wrapperField"><button id="input_9" type="submit" class="form-submit-button form-submit-button-navy-700 submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Enviar</button></div>
+        </div>
+      </li>
+      <li style="display:none">Should be Empty: <input type="text" name="website" value="" type="hidden" /></li>
+    </ul>
+  </div>
+  <script>
+    JotForm.showJotFormPowered = "0";
+  </script>
+  <script>
+    JotForm.poweredByText = "Powered by Jotform";
+  </script><input type="hidden" class="simple_spc" id="simple_spc" name="simple_spc" value="252284698364672" />
+  <script type="text/javascript">
+    var all_spc = document.querySelectorAll("form[id='252284698364672'] .si" + "mple" + "_spc");
+    for (var i = 0; i < all_spc.length; i++)
+    {
+      all_spc[i].value = "252284698364672-252284698364672";
+    }
+  </script>
+</form><script type="text/javascript">JotForm.ownerView=true;</script><script type="text/javascript">JotForm.isNewSACL=true;</script>
